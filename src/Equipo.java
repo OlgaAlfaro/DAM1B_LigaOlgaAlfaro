@@ -39,11 +39,11 @@ public class Equipo {
     }
 
     public void adquirirJugador(Jugador jugador){
+
         listaJugadores[getNumJugadores()] = jugador;
     }
 
     public void venderJugador(String nombreJugador){
-        int pos = Arrays.binarySearch(listaJugadores, nombreJugador);
         for(int i = 0; i < getNumJugadores(); i++){
             if(listaJugadores[i].getNombre() == nombreJugador){
                 borrar(i);
