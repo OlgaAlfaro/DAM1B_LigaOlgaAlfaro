@@ -39,8 +39,12 @@ public class Equipo {
     }
 
     public void adquirirJugador(Jugador jugador){
-
-        listaJugadores[getNumJugadores()] = jugador;
+        if(listaJugadores[getNumJugadores()] == null){
+            listaJugadores[getNumJugadores()] = jugador;
+        }
+        else{
+            System.out.println("El equipo está lleno");
+        }
     }
 
     public void venderJugador(String nombreJugador){
