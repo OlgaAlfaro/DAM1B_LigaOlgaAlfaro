@@ -5,7 +5,7 @@ public class Equipo {
 
     private String nombre;
     private String ciudad;
-    private Jugador[] listaJugadores;
+    public Jugador[] listaJugadores;
 
     public Equipo(String nombre, String ciudad){
         this.nombre = nombre;
@@ -39,12 +39,7 @@ public class Equipo {
     }
 
     public void adquirirJugador(Jugador jugador){
-        if(listaJugadores[getNumJugadores()] == null){
             listaJugadores[getNumJugadores()] = jugador;
-        }
-        else{
-            System.out.println("El equipo está lleno");
-        }
     }
 
     public void venderJugador(String nombreJugador){

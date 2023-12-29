@@ -2,7 +2,7 @@ public class Liga {
     private final int numMaxEquipos = 20;
 
     private String pais;
-    private Equipo[] listadoEquipos;
+    public Equipo[] listadoEquipos;
 
     public Liga(String pais){
         this.pais = pais;
@@ -10,10 +10,10 @@ public class Liga {
     }
 
     public void mostrarListadoEquipos(){
-        System.out.println("EQUIPO\t" + "CIUDAD\t" + "NUMERO JUGADORES");
+        System.out.println("EQUIPO\t\t" + "CIUDAD\t\t" + "NUMERO JUGADORES");
         for(int i = 0; i < getNumEquipos(); i++){
             if(listadoEquipos[i] != null){
-                System.out.println(listadoEquipos[i].getNombre() + "\t" + listadoEquipos[i].getCiudad() + "\t" + listadoEquipos[i].getNumJugadores());
+                System.out.println(listadoEquipos[i].getNombre() + "\t\t" + listadoEquipos[i].getCiudad() + "\t\t" + listadoEquipos[i].getNumJugadores());
             }
         }
     }
@@ -43,13 +43,7 @@ public class Liga {
     }
 
     public void anadirEquipo(Equipo equipo){
-        if(listadoEquipos[getNumEquipos()] == null){
             listadoEquipos[getNumEquipos()] = equipo;
-        }
-        else{
-            System.out.println("La liga está llena");
-        }
-
     }
 
 }
