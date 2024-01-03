@@ -68,11 +68,12 @@ public class Main {
     public static void insertarJugador(){
         System.out.println("Indique el nombre del equipo donde quiere insertar el jugador:");
         String nomEquipo = teclado.next();
-        if(miLiga.getEquipo(nomEquipo).getNombre() != nomEquipo){
+        while(miLiga.getEquipo(nomEquipo).getCiudad() == null){
             System.out.println("El equipo indicado no existe.");
             System.out.println("Introduce otro equipo:");
             nomEquipo = teclado.next();
         }
+
         System.out.println("Indique el nombre del jugador:");
         String nomJugador = teclado.next();
 
@@ -84,13 +85,29 @@ public class Main {
 
         System.out.println("Indique la posicion del jugador:");
         String nomPosicion = teclado.next();
+        switch(nomPosicion){
+            case "POR" : System.out.println();
+                        break;
+            case "DEF" : System.out.println();
+                        break;
+            case "CTC" : System.out.println();
+                        break;
+            case "DEL" : System.out.println();
+                        break;
+            default :   System.out.println("Posición no valida. \n" +
+                        "Inserte la posición del jugador(POR, DEF, CTC, o DEL):");
+                        nomPosicion = teclado.next();
+                        break;
+        }
+
+
         Jugador miJugador = new Jugador(nomJugador, nomPais, numEdad, nomPosicion);
         if(miLiga.getEquipo(nomEquipo).listaJugadores[21] != null){
             System.out.println("El equipo está lleno.");
         }
 
         else{
-            (miLiga.getEquipo(nomEquipo)).adquirirJugador(miJugador);
+            miLiga.getEquipo(nomEquipo).adquirirJugador(miJugador);
             System.out.println("Creando jugador...\n" +
                     "Insertando jugador...\n" +
                     "Jugador " + nomJugador + " insertado en " + nomEquipo);
