@@ -10,7 +10,7 @@ public class Equipo {
     public Equipo(String nombre, String ciudad){
         this.nombre = nombre;
         this.ciudad = ciudad;
-        listaJugadores = new Jugador[22];
+        listaJugadores = new Jugador[numMaxJugadores];
     }
 
     public String getNombre(){

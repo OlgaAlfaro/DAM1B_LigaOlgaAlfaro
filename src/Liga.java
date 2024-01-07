@@ -6,7 +6,7 @@ public class Liga {
 
     public Liga(String pais){
         this.pais = pais;
-        listadoEquipos = new Equipo[20];
+        listadoEquipos = new Equipo[numMaxEquipos];
     }
 
     public void mostrarListadoEquipos(){

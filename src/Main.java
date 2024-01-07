@@ -137,11 +137,14 @@ public class Main {
         String nomEquipo = teclado.next();
         System.out.println("Inserte el nombre del jugador:");
         String nomJugador = teclado.next();
-        if(miLiga.listadoEquipos[miLiga.getNumEquipos() - 1].getNombre() != nomEquipo){
-            System.out.println("El equipo indicado no existe.");
+
+        for(int i = 0; i<miLiga.getEquipo(nomEquipo).getNumJugadores(); i++){
+            if(miLiga.getEquipo(nomEquipo).listaJugadores[i].getNombre() != nomJugador){
+                System.out.println("El jugador no existe.");
+            }
         }
-        else if(miLiga.getEquipo(nomEquipo).listaJugadores[miLiga.getEquipo(nomEquipo).getNumJugadores() - 1].getNombre() != nomJugador){
-            System.out.println("El jugador no existe.");
+        if(miLiga.getEquipo(nomEquipo).getNombre() != nomEquipo){
+            System.out.println("El equipo indicado no existe.");
         }
        else{
            miLiga.getEquipo(nomEquipo).venderJugador(nomJugador);
