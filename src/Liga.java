@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Liga {
     private final int numMaxEquipos = 20;
 
@@ -31,7 +33,7 @@ public class Liga {
     public Equipo getEquipo(String nombreEquipo){
         Equipo miEquipo = listadoEquipos[0];
         for(int i = 0; i < getNumEquipos(); i++){
-            if(listadoEquipos[i].getNombre() == nombreEquipo){
+            if(Objects.equals(listadoEquipos[i].getNombre(), nombreEquipo)){
                 miEquipo = listadoEquipos[i];
             }
         }

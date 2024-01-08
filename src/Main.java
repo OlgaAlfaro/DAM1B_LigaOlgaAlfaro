@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -71,7 +72,9 @@ public class Main {
         teclado.useDelimiter("\n");
         System.out.println("Indique el nombre del equipo donde quiere insertar el jugador:");
         String nomEquipo = teclado.next();
-        while(miLiga.getEquipo(nomEquipo).getCiudad() == null){
+
+        Equipo miEquipo = miLiga.getEquipo(nomEquipo);
+        while(!Objects.equals(miEquipo.getNombre(), nomEquipo)){
             System.out.println("El equipo indicado no existe.");
             System.out.println("Introduce otro equipo:");
             nomEquipo = teclado.next();
@@ -105,12 +108,12 @@ public class Main {
 
 
         Jugador miJugador = new Jugador(nomJugador, nomPais, numEdad, nomPosicion);
-        if(miLiga.getEquipo(nomEquipo).listaJugadores[21] != null){
+        if(miEquipo.listaJugadores[21] != null){
             System.out.println("El equipo está lleno.");
         }
 
         else{
-            miLiga.getEquipo(nomEquipo).adquirirJugador(miJugador);
+            miEquipo.adquirirJugador(miJugador);
             System.out.println("Creando jugador...\n" +
                     "Insertando jugador...\n" +
                     "Jugador " + nomJugador + " insertado en " + nomEquipo);
@@ -129,9 +132,15 @@ public class Main {
         teclado.useDelimiter("\n");
         System.out.println("Indique el equipo que quiere visualizar:");
         String nomEquipo = teclado.next();
-            System.out.println("**********" + nomEquipo + "***************");
-            miLiga.getEquipo(nomEquipo).mostrarListaJugadores();
-            System.out.println("******************************************");
+        Equipo miEquipo = miLiga.getEquipo(nomEquipo);
+        while(!Objects.equals(miEquipo.getNombre(), nomEquipo)){
+            System.out.println("El equipo indicado no existe.");
+            System.out.println("Introduce otro equipo:");
+            nomEquipo = teclado.next();
+        }
+        System.out.println("**********" + nomEquipo + "***************");
+        miEquipo.mostrarListaJugadores();
+        System.out.println("******************************************");
 
     }
 
@@ -140,22 +149,29 @@ public class Main {
         teclado.useDelimiter("\n");
         System.out.println("Inserte el nombre del equipo donde quiere vender el jugador:");
         String nomEquipo = teclado.next();
+        Equipo miEquipo = miLiga.getEquipo(nomEquipo);
+        while(!Objects.equals(miEquipo.getNombre(), nomEquipo)){
+            System.out.println("El equipo indicado no existe.");
+            System.out.println("Introduce otro equipo:");
+            nomEquipo = teclado.next();
+        }
         System.out.println("Inserte el nombre del jugador:");
         String nomJugador = teclado.next();
 
-        for(int i = 0; i<miLiga.getEquipo(nomEquipo).getNumJugadores(); i++){
-            if(miLiga.getEquipo(nomEquipo).listaJugadores[i].getNombre() != nomJugador){
+        for(int i = 0; i<miEquipo.getNumJugadores(); i++){
+            if(!Objects.equals(miEquipo.listaJugadores[i].getNombre(), nomJugador)){
                 System.out.println("El jugador no existe.");
             }
+            else{
+                miEquipo.venderJugador(nomJugador);
+                System.out.println("Vendiendo jugador...\n" +
+                        "Jugador vendido.");
+            }
         }
-        if(miLiga.getEquipo(nomEquipo).getNombre() != nomEquipo){
-            System.out.println("El equipo indicado no existe.");
-        }
-       else{
-           miLiga.getEquipo(nomEquipo).venderJugador(nomJugador);
-           System.out.println("Vendiendo jugador...\n" +
-                    "Jugador vendido.");
-       }
+
+
+
+
 
     }
 }
