@@ -4,6 +4,7 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     private static Scanner teclado = new Scanner(System.in);
+
     static Liga miLiga;
     public static void main(String[] args) {
         System.out.println("Empiece creando una liga:");
@@ -45,6 +46,7 @@ public class Main {
         return opcion;
     }
     public static void insertarEquipo(){
+        teclado.useDelimiter("\n");
         System.out.println("Inserte el nombre del equipo:");
         String nomEquipo = teclado.next();
 
@@ -66,6 +68,7 @@ public class Main {
     }
 
     public static void insertarJugador(){
+        teclado.useDelimiter("\n");
         System.out.println("Indique el nombre del equipo donde quiere insertar el jugador:");
         String nomEquipo = teclado.next();
         while(miLiga.getEquipo(nomEquipo).getCiudad() == null){
@@ -123,6 +126,7 @@ public class Main {
     }
 
     public static void verJugadores(){
+        teclado.useDelimiter("\n");
         System.out.println("Indique el equipo que quiere visualizar:");
         String nomEquipo = teclado.next();
             System.out.println("**********" + nomEquipo + "***************");
@@ -133,6 +137,7 @@ public class Main {
 
 
     public static void venderJugador(){
+        teclado.useDelimiter("\n");
         System.out.println("Inserte el nombre del equipo donde quiere vender el jugador:");
         String nomEquipo = teclado.next();
         System.out.println("Inserte el nombre del jugador:");
