@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Equipo {
     private final int numMaxJugadores = 22;
@@ -43,20 +44,30 @@ public class Equipo {
     }
 
     public void venderJugador(String nombreJugador){
-        for(int i = 0; i < getNumJugadores(); i++){
-            if(listaJugadores[i].getNombre() == nombreJugador){
+        for(int i = 0; i <= getNumJugadores(); i++){
+            if(Objects.equals(listaJugadores[i].getNombre(), nombreJugador)){
                 borrar(i);
             }
         }
     }
 
-    public void borrar(int posicion){
+    private void borrar(int posicion){
         if (posicion >= 0 && posicion < getNumJugadores()) {
-            for (int i = posicion + 1; i < getNumJugadores(); i++) {
+            for (int i = posicion + 1; i <= getNumJugadores(); i++) {
                 listaJugadores[i - 1] = listaJugadores[i];
             }
 
         }
 
+    }
+
+    public Jugador getJugador(String nomJugador){
+        Jugador miJugador = listaJugadores[0];
+        for(int i = 0; i < getNumJugadores(); i++){
+            if(Objects.equals(listaJugadores[i].getNombre(), nomJugador)){
+                miJugador = listaJugadores[i];
+            }
+        }
+        return miJugador;
     }
 }

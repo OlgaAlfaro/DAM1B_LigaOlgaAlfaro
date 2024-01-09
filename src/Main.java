@@ -144,7 +144,6 @@ public class Main {
 
     }
 
-
     public static void venderJugador(){
         teclado.useDelimiter("\n");
         System.out.println("Inserte el nombre del equipo donde quiere vender el jugador:");
@@ -158,20 +157,15 @@ public class Main {
         System.out.println("Inserte el nombre del jugador:");
         String nomJugador = teclado.next();
 
-        for(int i = 0; i<miEquipo.getNumJugadores(); i++){
-            if(!Objects.equals(miEquipo.listaJugadores[i].getNombre(), nomJugador)){
-                System.out.println("El jugador no existe.");
-            }
-            else{
-                miEquipo.venderJugador(nomJugador);
-                System.out.println("Vendiendo jugador...\n" +
-                        "Jugador vendido.");
-            }
+        Jugador miJugador = miEquipo.getJugador(nomJugador);
+        if(!Objects.equals(miJugador.getNombre(), nomJugador)){
+            System.out.println("El jugador no existe.");
         }
-
-
-
-
+        else{
+            miEquipo.venderJugador(nomJugador);
+            System.out.println("Vendiendo jugador...\n" +
+                    "Jugador vendido.");
+        }
 
     }
 }
