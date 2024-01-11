@@ -61,6 +61,7 @@ public class Equipo {
 
     }
 
+    //Metodo que facilita la búsqueda de un jugador, evitando utilizar codigo extenso en el main.
     public Jugador getJugador(String nomJugador){
         Jugador miJugador = listaJugadores[0];
         for(int i = 0; i < getNumJugadores(); i++){
